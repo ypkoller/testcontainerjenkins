@@ -29,7 +29,7 @@ public class TestDocker {
     	.waitingFor(Wait.forHttp("/all"));;
     	
     @BeforeClass
-    public void before() throws InterruptedException {
+    public static void before() throws InterruptedException {
     	s_logger.debug("Start Sleep");
     	Thread.currentThread().sleep(10000); //10 Sekunden
     	s_logger.debug("End Sleep");
