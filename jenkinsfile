@@ -1,0 +1,23 @@
+def CONTAINER_NAME="micronaut"
+def CONTAINER_TAG="latest"
+def DOCKER_HUB_USER="gandalf1973"
+def HTTP_PORT="8080"
+
+node {
+
+    stage('Initialize'){
+        def dockerHome = tool 'myDocker'
+        def mavenHome  = tool 'myMaven'
+        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+    }
+
+    stage('Checkout') {
+        checkout scm
+    }
+    
+    stage('Test') {
+       sh "mvn clean test"
+	    junit "**/target/surefire-reports/*.xml"
+    }
+
+}
