@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Rule;
 import org.junit.Test;
 import org.testcontainers.containers.GenericContainer;
@@ -16,6 +18,8 @@ import org.testcontainers.shaded.org.apache.http.impl.client.HttpClientBuilder;
 import org.testcontainers.shaded.org.apache.http.util.EntityUtils;
 
 public class TestDocker {
+	
+	private final static Logger s_logger = LogManager.getLogger();
 
 
     @Rule
@@ -24,9 +28,10 @@ public class TestDocker {
 
     @Test
     public void simpleDslTest() throws IOException {
-        String address = String.format("http://%s:%s/hello", dslContainer.getContainerIpAddress(), dslContainer.getFirstMappedPort());
+        String address = String.format("http://%s:%s/hello", dslContainer.getContainerIpAddress(), dslContainer.getMappedPort(8080));
 
-
+        
+        s_logger.debug("Adresse: ", address);
         
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         HttpGet get = new HttpGet(address);
