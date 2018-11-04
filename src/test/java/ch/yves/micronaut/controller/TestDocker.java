@@ -26,8 +26,10 @@ public class TestDocker {
 
     @Test
     public void simpleDslTest() throws IOException {
-        String address = String.format("http://%s:%s/hello", dslContainer.getContainerIpAddress(), dslContainer.getMappedPort(exposedPort));
+        //String address = String.format("http://%s:%s/hello", dslContainer.getContainerIpAddress(), dslContainer.getMappedPort(exposedPort));
 
+        String address = "http://192.168.1.102:8080/hello";
+        
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         HttpGet get = new HttpGet(address);
 
