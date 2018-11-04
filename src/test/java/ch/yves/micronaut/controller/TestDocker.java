@@ -27,11 +27,15 @@ public class TestDocker {
     	
 
     @Test
-    public void simpleDslTest() throws IOException {
+    public void simpleDslTest() throws IOException, InterruptedException {
         String address = String.format("http://%s:%s/hello", dslContainer.getContainerIpAddress(), dslContainer.getMappedPort(8080));
 
         
         s_logger.debug("Adresse: ", address);
+        
+        Thread.currentThread().sleep(30000); //30 Sekunden
+        
+        s_logger.debug("End Sleep");
         
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         HttpGet get = new HttpGet(address);
