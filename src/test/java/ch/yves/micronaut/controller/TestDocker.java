@@ -2,13 +2,10 @@ package ch.yves.micronaut.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.shaded.org.apache.http.HttpEntity;
 import org.testcontainers.shaded.org.apache.http.client.methods.CloseableHttpResponse;
 import org.testcontainers.shaded.org.apache.http.client.methods.HttpGet;
@@ -17,11 +14,10 @@ import org.testcontainers.shaded.org.apache.http.impl.client.HttpClientBuilder;
 import org.testcontainers.shaded.org.apache.http.util.EntityUtils;
 
 public class TestDocker {
-	
-	private final int exposedPort = 8080;
 
-    @Rule
-    public GenericContainer dslContainer = new GenericContainer("gandalf1973/micronaut:latest");
+
+    //@Rule
+    //public GenericContainer dslContainer = new GenericContainer("gandalf1973/micronaut:latest");
     	
 
     @Test
