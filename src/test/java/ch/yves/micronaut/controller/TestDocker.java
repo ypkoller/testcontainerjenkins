@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Rule;
 import org.junit.Test;
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.shaded.org.apache.http.HttpEntity;
 import org.testcontainers.shaded.org.apache.http.client.methods.CloseableHttpResponse;
 import org.testcontainers.shaded.org.apache.http.client.methods.HttpGet;
@@ -23,7 +24,8 @@ public class TestDocker {
 
 
     @Rule
-    public GenericContainer dslContainer = new GenericContainer("gandalf1973/micronaut:latest");
+    public GenericContainer dslContainer = new GenericContainer("gandalf1973/micronaut:latest")
+    	.waitingFor(Wait.forHttp("/all"));;
     	
 
     @Test
@@ -33,7 +35,7 @@ public class TestDocker {
         
         s_logger.debug("Adresse: ", address);
         
-        Thread.currentThread().sleep(30000); //30 Sekunden
+        //Thread.currentThread().sleep(30000); //30 Sekunden
         
         s_logger.debug("End Sleep");
         
