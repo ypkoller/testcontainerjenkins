@@ -37,7 +37,7 @@ public class TestDocker {
             assertNotNull("Has body", response.getEntity());
             HttpEntity entity = response.getEntity();
             String content = EntityUtils.toString(entity);
-            assertEquals("Check String","Hello Worlddfsgdsg",content);
+            assertEquals("Check String","Hello World",content);
         }
     }
 }
