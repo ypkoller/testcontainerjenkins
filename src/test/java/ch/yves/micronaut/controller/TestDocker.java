@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.testcontainers.containers.GenericContainer;
@@ -28,8 +28,8 @@ public class TestDocker {
     public GenericContainer dslContainer = new GenericContainer("gandalf1973/micronaut:latest")
     	.waitingFor(Wait.forHttp("/all"));;
     	
-    @BeforeClass
-    public static void before() throws InterruptedException {
+    @Before
+    public void before() throws InterruptedException {
     	s_logger.debug("Start Sleep");
     	Thread.currentThread().sleep(10000); //10 Sekunden
     	s_logger.debug("End Sleep");
